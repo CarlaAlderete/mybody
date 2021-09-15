@@ -7,6 +7,7 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
 }
 header nav{
     display: flex;
@@ -17,11 +18,11 @@ h1, h3{
     color:#D9A404;
     font-family: 'Courgette', cursive;
 }
-a, p,input{
-    font-family: 'Roboto', sans-serif;
-}
 a{
     text-decoration: none;
+}
+main{
+    flex-grow: 1;
 }
 .bodySign{
     background-image: url('./assets/fondoSing.png');
@@ -29,8 +30,13 @@ a{
     background-repeat: no-repeat;
     background-size: cover;
 }
-main{
-    flex-grow: 1;
+.bodyProfile{
+    background-image: url('./assets/fondoprofile1.jpg');
+    background-position: 50% 90%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bodySign main{
     display: flex;
 }
 .mainSign{
@@ -57,7 +63,7 @@ main{
 .mainSign form{
     margin: 1vw 2vw;
 }
-.mainSign form input, .mainSign form button{
+form input{
     border-radius: 12px;
     background: #d9d9d942;
     border: 1px solid #d9a4047c;
@@ -65,8 +71,32 @@ main{
     padding: .5vw 1.5vw;
     margin: 0.5vw;
 }
-.mainSign form button{
+input[type='submit']{
     background-color: #d9a4047c;
+}
+.myProfile{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.myRecord{
+    width: 40vw;
+}
+.myProgress{
+    flex-grow: 1;
+    align-items: center;
+    margin: 2vw 0;
+    padding: 1vw 0;
+    display: flex;
+    justify-content: space-around;
+}
+.myProgress div{
+    background-color: #d9d9d9a6;
+    border-radius: 22px;
+    border: 1px solid #D9D9D9;
+}
+li{
+    list-style:none
 }
 footer{
     padding: 1vh 0;

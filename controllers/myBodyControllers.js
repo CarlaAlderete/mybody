@@ -2,13 +2,13 @@ const path = require('path')
 
 const myBodyControllers ={
     signUp: (req, res)=>{
-        res.sendFile(path.join(__dirname, '..', 'views/index.html'))
+        res.render('index')
     },
     signIn: (req,res)=>{
-        res.sendFile(path.join(__dirname, '..', 'views/signIn.html'))
+        res.render('signIn')
     },
     home: (req,res)=>{
-        res.sendFile(path.join(__dirname, '..', 'views/home.html'))
+        res.render('home')
     }
 }
 module.exports = myBodyControllers

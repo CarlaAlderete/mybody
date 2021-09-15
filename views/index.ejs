@@ -1,0 +1,18 @@
+<%- include('partials/head.ejs')%>
+<body class='bodySign'>
+    <main>
+        <div class='mainSign'>
+            <h1>My Body</h1>
+            <p>Sign up to monitor your progress</p>
+            <form action='/' method="POST">
+                <input type='text' name='name' placeholder="Name"/>
+                <input type='text' name='mail' placeholder="E-mail"/>
+                <input type='password' name='password' placeholder="Password"/>
+                <input type='submit' value='Sign Up'/>
+            </form>
+            <div>
+                <p>¿You have an account?</p>
+                <a href='/signin'>Sign In</a>
+            </div>
+        </div>
+<%- include('partials/footer.ejs')%>
