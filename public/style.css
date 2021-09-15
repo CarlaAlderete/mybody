@@ -8,7 +8,13 @@ body{
     flex-direction: column;
     min-height: 100vh;
 }
-h1{
+header nav{
+    display: flex;
+    justify-content: space-between;
+    padding: .5vw 2vw;
+}
+h1, h3{
+    color:#D9A404;
     font-family: 'Courgette', cursive;
 }
 a, p,input{
@@ -38,7 +44,6 @@ main{
 }
 .mainSign h1{
     margin: .5vw;
-    color:#D9A404;
 }
 .mainSign form{
     display: flex;
@@ -52,15 +57,16 @@ main{
 .mainSign form{
     margin: 1vw 2vw;
 }
-.mainSign form input{
-    padding: .5vw 1.5vw;
-    margin: 0.5vw;
-}
-form input{
+.mainSign form input, .mainSign form button{
     border-radius: 12px;
     background: #d9d9d942;
     border: 1px solid #d9a4047c;
     outline: none;
+    padding: .5vw 1.5vw;
+    margin: 0.5vw;
+}
+.mainSign form button{
+    background-color: #d9a4047c;
 }
 footer{
     padding: 1vh 0;
