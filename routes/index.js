@@ -9,6 +9,7 @@ router.route('/')
 
 router.route('/signin')
 .get(myBodyControllers.signIn)
+.post(userControllers.signUser)
 
 router.route('/home')
 .get(myBodyControllers.home)
