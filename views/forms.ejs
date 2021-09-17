@@ -3,42 +3,61 @@
     <div class='myProgress'>
         <div class='mydata'>
             <h3>My data</h3>
-            <% console.log(day)%>
             <form action='/day/<%= id %>' method='POST'>
                 <input type="date" name="toDay" id="day" required>
                 <label for='weight'>Weight (kg): </label>
-                <input type='number' name='weight' id='weight' value='<%= day && day.weight %>'/>
+                <input type='number' name='weight' id='weight' value='<%= measures && measures.weight %>'/>
                 <label for='chest'>Chest (cm): </label>
-                <input type='number' name='chest' id='chest' value='<%= day && day.chest %>'/>
+                <input type='number' name='chest' id='chest' value='<%= measures && measures.chest %>'/>
                 <label for='hip'>Hip (cm): </label>
-                <input type='number' name='hip' id='hip' value='<%= day && day.hip %>'/>
+                <input type='number' name='hip' id='hip' value='<%= measures && measures.hip %>'/>
                 <label for='waist'>Waist (cm): </label>
-                <input type='number' name='waist' id='waist' value='<%= day && day.waist %>'/>
+                <input type='number' name='waist' id='waist' value='<%= measures && measures.waist %>'/>
                 <label for='rightThigh'>RightThigh (cm): </label>
-                <input type='number' name='rightThigh' id='rightThigh' value='<%= day && day.rightThigh %>'/>
+                <input type='number' name='rightThigh' id='rightThigh' value='<%= measures && measures.rightThigh %>'/>
                 <label for='leftThigh'>LeftThigh (cm): </label>
-                <input type='number' name='leftThigh' id='leftThigh' value='<%= day && day.leftThigh %>'/>
+                <input type='number' name='leftThigh' id='leftThigh' value='<%= measures && measures.leftThigh %>'/>
                 <label for='upperArm'>Upper arm (cm): </label>
-                <input type='number' name='upperArm' id='upperArm' value='<%= day && day.upperArm %>'/>
+                <input type='number' name='upperArm' id='upperArm' value='<%= measures && measures.upperArm %>'/>
                 <label for='calf'>Calf (cm): </label>
-                <input type='number' name='calf' id='calf' value='<%= day && day.calf %>'/>
-                <input type='hidden' name='_id' value='<%= day ? day._id : null %>'/>
-                <input type='submit' value='Upgrade'/>
+                <input type='number' name='calf' id='calf' value='<%= measures && measures.calf %>'/>
+                <input type='hidden' name='_id' value='<%= measures ? measures._id : null %>'/>
+                <input type='hidden' name='action' value='measures'/>
+                <input type='submit' value='Update'/>
             </form>
         </div>
-        <div class="myRecord">
-            <form>
-                <label for='breakfast'>Breakfast</label>
-                <input ype='text' name='breakfast' id='breakfast' value='<%=day && day.breakfast%>'/>
-                <label for='lunch'>Lunch</label>
-                <input type='text' name='lunch' id='lunch' value='<%=day && day.lunch%>'/>
-                <label for='afternoonSnack'>Afternoon Snack</label>
-                <input type='text' name='afternoonSnack' id='afternoonSnack' value='<%=day && day.afternoonSnack%>'/>
-                <label for='dinner'>Dinner</label>
-                <input type='text' name='dinner' id='dinner' value='<%=day && day.dinner%>'/>
-                <input type='hidden' name='_id' value='<%= day ? day._id : null %>'/>
-                <input type='submit' value='Upgrade'/>
-            </form>
+        <div>
+            <div>
+                <form action='/user/<%= id %>' method='POST'>
+                    <label for='age'>Age: </label>
+                    <input type='text' name='age' id='age' value='<%= age %>'/>
+                    <label for='height'>Height (cm): </label>
+                    <input type='text' name='height' id='height' value='<%= height %>'/>
+                    <input type='submit' value='Update'/>
+                </form>
+            </div>
+            <div class="myRecord">
+                <form action='/day/<%= id %>' method='POST'>
+                    <input type="date" name="toDay" id="day" required>
+                    <label for='breakfast'>Breakfast</label>
+                    <input ype='text' name='breakfast' id='breakfast' value='<%=dailyMeals && dailyMeals.breakfast%>'/>
+                    <label for='lunch'>Lunch</label>
+                    <input type='text' name='lunch' id='lunch' value='<%=dailyMeals && dailyMeals.lunch%>'/>
+                    <label for='afternoonSnack'>Afternoon Snack</label>
+                    <input type='text' name='afternoonSnack' id='afternoonSnack' value='<%=dailyMeals && dailyMeals.afternoonSnack%>'/>
+                    <label for='dinner'>Dinner</label>
+                    <input type='text' name='dinner' id='dinner' value='<%=dailyMeals && dailyMeals.dinner%>'/>
+                    <input type='hidden' name='_id' value='<%= dailyMeals ? dailyMeals._id : null %>'/>
+                    <input type='hidden' name='action' value='dailyMeals'/>
+                    <input type='submit' value='Update'/>
+                </form>
+            </div>
+            <div>
+                <form action='/user/<%= id %>' method='GET'>
+                    <p>¿Delete Profile?</p>
+                    <input type='submit' id='delete' value='Delete'/>
+                </form>
+            </div>
         </div>
     </div>
 <%- include('partials/footer.ejs')%>

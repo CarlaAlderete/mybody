@@ -20,12 +20,14 @@ const myBodyControllers = {
     home:async(req,res)=>{
         if(req.session.login){
             let today = await Day.findOne({userId:req.session._id})
+            console.log(req.session)
             return res.render('home',{
                 id: req.session._id,
                 name: req.session.name,
                 age: req.session.age,
                 height: req.session.height,
-                day: today ? today.day[today.day.length -1] : null
+                dailyMeals: today ? today.dailyMeals[today.dailyMeals.length -1] : null,
+                measures: today ? today.measures[today.measures.length -1] : null
             })
         }
         res.redirect('/')
@@ -38,7 +40,8 @@ const myBodyControllers = {
                 name: req.session.name,
                 age: req.session.age,
                 height: req.session.height,
-                day: today ? today.day[today.day.length -1] : null
+                dailyMeals: today ? today.dailyMeals[today.dailyMeals.length -1] : null,
+                measures: today ? today.measures[today.measures.length -1] : null
             })
         }
         res.redirect('/')

@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const Day = require('../models/Day')
 const bcryptjs = require('bcryptjs')
 
 const userControllers ={
@@ -45,6 +46,31 @@ const userControllers ={
         req.session.destroy(()=>{
             res.redirect('/')
         })
+    },
+    editUser:async(req,res)=>{
+        try{
+            let editUser = await User.findOneAndUpdate({_id:req.params.id},{...req.body})
+            req.session.login = true
+            req.session._id = editUser._id
+            req.session.name = editUser.name
+            req.session.age = editUser.age
+            req.session.height = editUser.height
+            res.redirect('/home')
+        }catch(err){
+            res.redirect('/forms')
+        }
+
+    },
+    deleteUser:async(req,res)=>{
+        try{
+            await Day.findOneAndDelete({userId:req.params.id})
+            await User.findOneAndDelete({_id:req.params.id})
+            req.session.destroy(()=>{
+                res.redirect('/')
+            })
+        }catch(err){
+            res.redirect('/forms')
+        }
     }
 }
 module.exports= userControllers

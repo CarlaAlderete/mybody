@@ -24,7 +24,9 @@ router.route('/forms')
 
 router.route('/day/:id')
 .post(dayControllers.editDay)
-// router.route('/edit/:id')
-// .post(userControllers.editUser)
+
+router.route('/user/:id')
+.get(userControllers.deleteUser)
+.post(userControllers.editUser)
 
 module.exports = router
