@@ -3,6 +3,7 @@ const { get } = require('mongoose')
 const router = express.Router()
 const myBodyControllers = require('../controllers/myBodyControllers')
 const userControllers = require('../controllers/userControllers')
+const dayControllers = require('../controllers/dayControllers')
 
 router.route('/signup')
 .get(myBodyControllers.signUp)
@@ -20,5 +21,10 @@ router.route('/home')
 
 router.route('/forms')
 .get(myBodyControllers.forms)
+
+router.route('/day/:id')
+.post(dayControllers.editDay)
+// router.route('/edit/:id')
+// .post(userControllers.editUser)
 
 module.exports = router

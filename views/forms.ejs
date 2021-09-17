@@ -1,4 +1,44 @@
 <%- include('partials/head.ejs')%>
 <%- include('partials/header.ejs')%>
-<h1>aca van los formularios</h1>
+    <div class='myProgress'>
+        <div class='mydata'>
+            <h3>My data</h3>
+            <% console.log(day)%>
+            <form action='/day/<%= id %>' method='POST'>
+                <input type="date" name="toDay" id="day" required>
+                <label for='weight'>Weight (kg): </label>
+                <input type='number' name='weight' id='weight' value='<%= day && day.weight %>'/>
+                <label for='chest'>Chest (cm): </label>
+                <input type='number' name='chest' id='chest' value='<%= day && day.chest %>'/>
+                <label for='hip'>Hip (cm): </label>
+                <input type='number' name='hip' id='hip' value='<%= day && day.hip %>'/>
+                <label for='waist'>Waist (cm): </label>
+                <input type='number' name='waist' id='waist' value='<%= day && day.waist %>'/>
+                <label for='rightThigh'>RightThigh (cm): </label>
+                <input type='number' name='rightThigh' id='rightThigh' value='<%= day && day.rightThigh %>'/>
+                <label for='leftThigh'>LeftThigh (cm): </label>
+                <input type='number' name='leftThigh' id='leftThigh' value='<%= day && day.leftThigh %>'/>
+                <label for='upperArm'>Upper arm (cm): </label>
+                <input type='number' name='upperArm' id='upperArm' value='<%= day && day.upperArm %>'/>
+                <label for='calf'>Calf (cm): </label>
+                <input type='number' name='calf' id='calf' value='<%= day && day.calf %>'/>
+                <input type='hidden' name='_id' value='<%= day ? day._id : null %>'/>
+                <input type='submit' value='Upgrade'/>
+            </form>
+        </div>
+        <div class="myRecord">
+            <form>
+                <label for='breakfast'>Breakfast</label>
+                <input ype='text' name='breakfast' id='breakfast' value='<%=day && day.breakfast%>'/>
+                <label for='lunch'>Lunch</label>
+                <input type='text' name='lunch' id='lunch' value='<%=day && day.lunch%>'/>
+                <label for='afternoonSnack'>Afternoon Snack</label>
+                <input type='text' name='afternoonSnack' id='afternoonSnack' value='<%=day && day.afternoonSnack%>'/>
+                <label for='dinner'>Dinner</label>
+                <input type='text' name='dinner' id='dinner' value='<%=day && day.dinner%>'/>
+                <input type='hidden' name='_id' value='<%= day ? day._id : null %>'/>
+                <input type='submit' value='Upgrade'/>
+            </form>
+        </div>
+    </div>
 <%- include('partials/footer.ejs')%>

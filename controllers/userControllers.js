@@ -11,11 +11,10 @@ const userControllers ={
             if(repeatUser) throw new Error('Mail is being used with another account')
             await newUser.save()
             req.session.login = true
-            req.session.id = newUser._id
+            req.session._id = newUser._id
             req.session.name = newUser.name
             req.session.age = newUser.age
             req.session.height = newUser.height
-            req.session.day = null
             res.redirect('/home')
         }catch(err){
             res.render('signUp', {
@@ -31,11 +30,10 @@ const userControllers ={
             let match = bcryptjs.compareSync(password, userExit.password)
             if(!match) throw new Error('The data entered is not valid. Please, try again.')
             req.session.login = true
-            req.session.id = userExit._id
+            req.session._id = userExit._id
             req.session.name = userExit.name
             req.session.age = userExit.age
             req.session.height = userExit.height
-            req.session.day = userExit.day[userExit.day.length-1]
             res.redirect('/home')
         }catch(err){
             res.render('index',{

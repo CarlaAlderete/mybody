@@ -1,35 +1,42 @@
 <%- include('partials/head.ejs')%>
 <%- include('partials/header.ejs')%> 
             <div class='myProgress'>
+                <% console.log(day) %>
+               <% if(!day){%>
+                <form action='/forms' method="GET">
+                    <input type='submit' value='Start with your registration'/>
+                </form>
+              <%}else{%>
                 <div class='mydata'>
                     <h3>My data</h3>
-                    <form action='/user/:id' method='POST'>
-                        <label for='weight'>Weight: </label>
-                        <input type='number' name='weight' id='weight' value='<%= day && day.weight.weight %>'/>
-                        <label for='imc'>IMC: </label>
-                        <input type='number' name='imc' id='imc' value='<%= day && day.weight.imc %>'/>
-                        <label for='gc'>%GC: </label>
-                        <input type='number' name='gc' id='gc' value='<%= day && day.weight.gc %>'/>
-                        <label for='chest'>Chest: </label>
-                        <input type='number' name='chest' id='chest' value='<%= day && day.bodyMeasurements.chest %>'/>
-                        <label for='hip'>Hip: </label>
-                        <input type='number' name='hip' id='hip' value='<%= day && day.bodyMeasurements.hip %>'/>
-                        <label for='waist'>Waist: </label>
-                        <input type='number' name='waist' id='waist' value='<%= day && day.bodyMeasurements.waist %>'/>
-                        <label for='rightThigh'>RightThigh: </label>
-                        <input type='number' name='rightThigh' id='rightThigh' value='<%= day && day.bodyMeasurements.rightThigh %>'/>
-                        <label for='leftThigh'>LeftThigh: </label>
-                        <input type='number' name='leftThigh' id='leftThigh' value='<%= day && day.bodyMeasurements.leftThigh %>'/>
-                        <label for='upperArm'>Upper arm: </label>
-                        <input type='number' name='upperArm' id='upperArm' value='<%= day && day.bodyMeasurements.upperArm %>'/>
-                        <label for='calf'>Calf: </label>
-                        <input type='number' name='calf' id='calf' value='<%= day && day.bodyMeasurements.calf %>'/>
-                        <input type='hidden' />
-                        <input type='submit' value='Upgrade'/>
+                    <lu>
+                        <li>Weight: <%=day && day.weight %> kg</li>
+                        <li>Chest: <%=day && day.chest %> cm</li>
+                        <li>Hip: <%=day && day.hip %> cm</li>
+                        <li>Waist: <%=day && day.waist %> cm</li>
+                        <li>RightThigh: <%=day && day.rightThigh %> cm</li>
+                        <li>LeftThigh: <%=day && day.leftThigh %> cm</li>
+                        <li>Upper arm: <%=day && day.upperArm %> cm</li>
+                        <li>Calf: <%=day && day.calf %> cm</li>
+                    </lu>
+                    <form action='/forms' method="GET">
+                        <input type="submit" value='Upgrade'>
                     </form>
                 </div>
                 <div class="myRecord">
+                    <h3>Breakfast</h3>
+                    <p><%=day && day.breakfast%></p>
+                    <h3>Lunch</h3>
+                    <p><%=day && day.lunch%></p>
+                    <h3>Afternoon Snack</h3>
+                    <p><%=day && day.afternoonSnack%></p>
+                    <h3>Dinner</h3>
+                    <p><%=day && day.dinner%></p>
                 </div>
+                <form action='/forms' method="GET">
+                    <input type="submit" value='Upgrade'>
+                </form>
+              <% } %> 
             </div>
         <script>
 
