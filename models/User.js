@@ -20,7 +20,8 @@ const userSchema = new mongoose.Schema({
       waist:Number,
       rightThigh: Number, 
       leftThigh: Number,
-      upperArm:Number
+      upperArm:Number,
+      calf:Number
     },
     weight:{
       weight:String,

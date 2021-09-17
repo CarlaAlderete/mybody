@@ -1,4 +1,5 @@
 const express = require('express')
+const { get } = require('mongoose')
 const router = express.Router()
 const myBodyControllers = require('../controllers/myBodyControllers')
 const userControllers = require('../controllers/userControllers')
@@ -16,5 +17,8 @@ router.route('/signout')
 
 router.route('/home')
 .get(myBodyControllers.home)
+
+router.route('/forms')
+.get(myBodyControllers.forms)
 
 module.exports = router

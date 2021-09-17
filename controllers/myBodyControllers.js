@@ -9,10 +9,22 @@ const myBodyControllers = {
             error: null
         })
     },
-    home: async (req,res)=>{
+    home:(req,res)=>{
         if(req.session.login){
             console.log(req.session)
             return res.render('home',{
+                id: req.session.id,
+                name: req.session.name,
+                age: req.session.age,
+                height: req.session.height,
+                day: req.session.day
+            })
+        }
+        res.redirect('/')
+    },
+    forms:(req,res)=>{
+        if(req.session.login){
+            return res.render('forms',{
                 id: req.session.id,
                 name: req.session.name,
                 age: req.session.age,

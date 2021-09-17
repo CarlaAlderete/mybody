@@ -1,37 +1,36 @@
 <%- include('partials/head.ejs')%>
-<body class='bodyProfile'>
-    <header>
-        <nav>
-            <h3>MyBody</h3>
-            <p>Hi! <%=name%></p>
-            <a href='/signout'>Sign Out</a>
-        </nav>
-    </header>
-    <main class='myProfile'>
-        <h1>My body</h1>
-        <p>The people who keep track of their diet are the ones who get the best results and the ones who maintain it over time.</p>
-        <div class='myProgress'>
-            <div class='mydata'>
-                <h3>My data</h3>
-                <lu>
-                    <li>Weignt: </li>
-                    <li>IMC: </li>
-                    <li>%GC: </li>
-                    <li>Chest: </li>
-                    <li>Hip: </li>
-                    <li>Waist: </li>
-                    <li>RightThigh: </li>
-                    <li>LeftThigh: </li>
-                    <li>Upper arm: </li>
-                    <li>Calf: </li>
-                </lu>
-                <form>
-                    <input type='submit' value='Upgrade'/>
-                </form>
+<%- include('partials/header.ejs')%> 
+            <div class='myProgress'>
+                <div class='mydata'>
+                    <h3>My data</h3>
+                    <form action='/user/:id' method='POST'>
+                        <label for='weight'>Weight: </label>
+                        <input type='number' name='weight' id='weight' value='<%= day && day.weight.weight %>'/>
+                        <label for='imc'>IMC: </label>
+                        <input type='number' name='imc' id='imc' value='<%= day && day.weight.imc %>'/>
+                        <label for='gc'>%GC: </label>
+                        <input type='number' name='gc' id='gc' value='<%= day && day.weight.gc %>'/>
+                        <label for='chest'>Chest: </label>
+                        <input type='number' name='chest' id='chest' value='<%= day && day.bodyMeasurements.chest %>'/>
+                        <label for='hip'>Hip: </label>
+                        <input type='number' name='hip' id='hip' value='<%= day && day.bodyMeasurements.hip %>'/>
+                        <label for='waist'>Waist: </label>
+                        <input type='number' name='waist' id='waist' value='<%= day && day.bodyMeasurements.waist %>'/>
+                        <label for='rightThigh'>RightThigh: </label>
+                        <input type='number' name='rightThigh' id='rightThigh' value='<%= day && day.bodyMeasurements.rightThigh %>'/>
+                        <label for='leftThigh'>LeftThigh: </label>
+                        <input type='number' name='leftThigh' id='leftThigh' value='<%= day && day.bodyMeasurements.leftThigh %>'/>
+                        <label for='upperArm'>Upper arm: </label>
+                        <input type='number' name='upperArm' id='upperArm' value='<%= day && day.bodyMeasurements.upperArm %>'/>
+                        <label for='calf'>Calf: </label>
+                        <input type='number' name='calf' id='calf' value='<%= day && day.bodyMeasurements.calf %>'/>
+                        <input type='hidden' />
+                        <input type='submit' value='Upgrade'/>
+                    </form>
+                </div>
+                <div class="myRecord">
+                </div>
             </div>
-            <div class="myRecord">
-            </div>
-        </div>
         <script>
 
         </script>
