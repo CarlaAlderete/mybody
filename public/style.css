@@ -14,6 +14,9 @@ header nav{
     justify-content: space-between;
     padding: .5vw 2vw;
 }
+header nav a{
+    color:#000;
+}
 h1, h3{
     color:#D9A404;
     font-family: 'Courgette', cursive;
@@ -79,9 +82,13 @@ input[type='submit']{
     display: flex;
     flex-direction: column;
 }
+.myProfile h1{
+    font-size: 7vmin;
+    margin-bottom: 1vw;
+}
 .myRecord{
     width: 60vw;
-    height: 20vw;
+    height: 25vw;
 }
 .myProgress{
     flex-grow: 1;
@@ -101,7 +108,7 @@ input[type='submit']{
 }
 li{
     list-style:none;
-    margin-left: 2vw;
+    margin: .5vw 2vw;
     text-align: left;
 }
 footer{

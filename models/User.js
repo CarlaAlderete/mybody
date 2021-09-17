@@ -5,7 +5,29 @@ const userSchema = new mongoose.Schema({
   mail:String,
   password:String,
   age:Number,
-  height:Number
+  height:Number,
+  day:[{
+    toDay:String,
+    dailyLog:{
+      breakfast:String,
+      lunch:String,
+      afternoonSnack:String,
+      dinner:String
+    },
+    bodyMeasurements:{
+      chest:Number,
+      hip:Number,
+      waist:Number,
+      rightThigh: Number, 
+      leftThigh: Number,
+      upperArm:Number
+    },
+    weight:{
+      weight:String,
+      imc:Number,
+      gc:Number
+    }
+  }]
 })
 
 const User = mongoose.model('user', userSchema)

@@ -1,23 +1,22 @@
-<%- include('partials/head.ejs')%>
+<%- include('partials/head.ejs') %>
 <body class='bodySign'>
     <main>
         <div class='mainSign'>
             <h1>My Body</h1>
-            <p>Sign up to monitor your progress</p>
+            <p>Login to your account and keep your registration updated</p>
             <div class='messageError'>
                 <% if(error){%>
-                    <span><%= error.includes('account') ? error : 'Oops! an error has occurred try again later' %></span> 
+                    <span><%= error.includes('Please') ? error : 'Oops! an error has occurred try again later'%></span> 
                     <%}%> 
             </div>
             <form action='/' method="POST">
-                <input type='text' name='name' placeholder="Name" required/>
                 <input type='text' name='mail' placeholder="E-mail" required/>
                 <input type='password' name='password' placeholder="Password" required/>
-                <input type='submit' value='Sign Up'/>
+                <input type='submit' value='Sign In' required/>
             </form>
             <div>
-                <p>¿You have an account?</p>
-                <a href='/signin'>Sign In</a>
+                <p>¿You do not have an account?</p>
+                <a href='/signup'>Sign Up</a>
             </div>
         </div>
-<%- include('partials/footer.ejs')%>
+<%- include('partials/footer.ejs') %>
