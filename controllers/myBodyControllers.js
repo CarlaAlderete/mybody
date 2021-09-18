@@ -20,7 +20,6 @@ const myBodyControllers = {
     home:async(req,res)=>{
         if(req.session.login){
             let today = await Day.findOne({userId:req.session._id})
-            console.log(req.session)
             return res.render('home',{
                 id: req.session._id,
                 name: req.session.name,
@@ -31,6 +30,19 @@ const myBodyControllers = {
             })
         }
         res.redirect('/')
+    },
+    homeDay:async(req,res)=>{
+        let today = await Day.findOne({userId:req.session._id})
+        let dailyMealsSelect = today.dailyMeals.find(obj => obj.toDay === req.body.selectDay)
+        let measuresSelect = today.measures.find(obj => obj.toDay === req.body.selectDay)
+            return res.render('home',{
+                id: req.session._id,
+                name: req.session.name,
+                age: req.session.age,
+                height: req.session.height,
+                dailyMeals: dailyMealsSelect ? dailyMealsSelect : 'There is no information',
+                measures: measuresSelect ? measuresSelect : 'There is no information'
+            })
     },
     forms:async(req,res)=>{
         if(req.session.login){

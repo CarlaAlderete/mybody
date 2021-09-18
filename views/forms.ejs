@@ -1,26 +1,45 @@
 <%- include('partials/head.ejs')%>
 <%- include('partials/header.ejs')%>
+    <form action='/home' method='GET'>
+        <input type="submit" value='Back'>
+    </form>
     <div class='myProgress'>
         <div class='mydata'>
             <h3>My data</h3>
             <form action='/day/<%= id %>' method='POST'>
                 <input type="date" name="toDay" id="day" required>
-                <label for='weight'>Weight (kg): </label>
-                <input type='number' name='weight' id='weight' value='<%= measures && measures.weight %>'/>
-                <label for='chest'>Chest (cm): </label>
-                <input type='number' name='chest' id='chest' value='<%= measures && measures.chest %>'/>
-                <label for='hip'>Hip (cm): </label>
-                <input type='number' name='hip' id='hip' value='<%= measures && measures.hip %>'/>
-                <label for='waist'>Waist (cm): </label>
-                <input type='number' name='waist' id='waist' value='<%= measures && measures.waist %>'/>
-                <label for='rightThigh'>RightThigh (cm): </label>
-                <input type='number' name='rightThigh' id='rightThigh' value='<%= measures && measures.rightThigh %>'/>
-                <label for='leftThigh'>LeftThigh (cm): </label>
-                <input type='number' name='leftThigh' id='leftThigh' value='<%= measures && measures.leftThigh %>'/>
-                <label for='upperArm'>Upper arm (cm): </label>
-                <input type='number' name='upperArm' id='upperArm' value='<%= measures && measures.upperArm %>'/>
-                <label for='calf'>Calf (cm): </label>
-                <input type='number' name='calf' id='calf' value='<%= measures && measures.calf %>'/>
+                <div>
+                    <label for='weight'>Weight (kg): </label>
+                    <input type='number' name='weight' id='weight' value='<%= measures && measures.weight %>'/>
+                </div>
+                <div>
+                    <label for='chest'>Chest (cm): </label>
+                    <input type='number' name='chest' id='chest' value='<%= measures && measures.chest %>'/>
+                </div>
+                <div>
+                    <label for='hip'>Hip (cm): </label>
+                    <input type='number' name='hip' id='hip' value='<%= measures && measures.hip %>'/>
+                </div>
+                <div>
+                    <label for='waist'>Waist (cm): </label>
+                    <input type='number' name='waist' id='waist' value='<%= measures && measures.waist %>'/>
+                </div>
+                <div>
+                    <label for='rightThigh'>RightThigh (cm): </label>
+                    <input type='number' name='rightThigh' id='rightThigh' value='<%= measures && measures.rightThigh %>'/>
+                </div>
+                <div>
+                    <label for='leftThigh'>LeftThigh (cm): </label>
+                    <input type='number' name='leftThigh' id='leftThigh' value='<%= measures && measures.leftThigh %>'/>
+                </div>
+                <div>
+                    <label for='upperArm'>Upper arm (cm): </label>
+                    <input type='number' name='upperArm' id='upperArm' value='<%= measures && measures.upperArm %>'/>
+                </div>
+                <div>
+                    <label for='calf'>Calf (cm): </label>
+                    <input type='number' name='calf' id='calf' value='<%= measures && measures.calf %>'/>
+                </div>
                 <input type='hidden' name='_id' value='<%= measures ? measures._id : null %>'/>
                 <input type='hidden' name='action' value='measures'/>
                 <input type='submit' value='Update'/>
@@ -39,14 +58,22 @@
             <div class="myRecord">
                 <form action='/day/<%= id %>' method='POST'>
                     <input type="date" name="toDay" id="day" required>
-                    <label for='breakfast'>Breakfast</label>
-                    <input ype='text' name='breakfast' id='breakfast' value='<%=dailyMeals && dailyMeals.breakfast%>'/>
-                    <label for='lunch'>Lunch</label>
-                    <input type='text' name='lunch' id='lunch' value='<%=dailyMeals && dailyMeals.lunch%>'/>
-                    <label for='afternoonSnack'>Afternoon Snack</label>
-                    <input type='text' name='afternoonSnack' id='afternoonSnack' value='<%=dailyMeals && dailyMeals.afternoonSnack%>'/>
-                    <label for='dinner'>Dinner</label>
-                    <input type='text' name='dinner' id='dinner' value='<%=dailyMeals && dailyMeals.dinner%>'/>
+                    <div> 
+                        <label for='breakfast'>Breakfast</label>
+                        <input ype='text' name='breakfast' id='breakfast' value='<%=dailyMeals && dailyMeals.breakfast%>'/>
+                    </div>
+                    <div>
+                        <label for='lunch'>Lunch</label>
+                        <input type='text' name='lunch' id='lunch' value='<%=dailyMeals && dailyMeals.lunch%>'/>
+                    </div>
+                    <div>
+                        <label for='afternoonSnack'>Afternoon Snack</label>
+                        <input type='text' name='afternoonSnack' id='afternoonSnack' value='<%=dailyMeals && dailyMeals.afternoonSnack%>'/>
+                    </div>
+                    <div>
+                        <label for='dinner'>Dinner</label>
+                        <input type='text' name='dinner' id='dinner' value='<%=dailyMeals && dailyMeals.dinner%>'/>
+                    </div>
                     <input type='hidden' name='_id' value='<%= dailyMeals ? dailyMeals._id : null %>'/>
                     <input type='hidden' name='action' value='dailyMeals'/>
                     <input type='submit' value='Update'/>
@@ -54,7 +81,7 @@
             </div>
             <div>
                 <form action='/user/<%= id %>' method='GET'>
-                    <p>¿Delete Profile?</p>
+                    <label for='delete'>¿Delete Profile?</label>
                     <input type='submit' id='delete' value='Delete'/>
                 </form>
             </div>

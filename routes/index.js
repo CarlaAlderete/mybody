@@ -18,6 +18,7 @@ router.route('/signout')
 
 router.route('/home')
 .get(myBodyControllers.home)
+.post(myBodyControllers.homeDay)
 
 router.route('/forms')
 .get(myBodyControllers.forms)

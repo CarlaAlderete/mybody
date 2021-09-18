@@ -6,36 +6,56 @@
                     <input type='submit' value='Start with your registration'/>
                 </form>
               <%}else{%>
-                <div class='mydata'>
-                    <h3>My data</h3>
-                    <lu>
-                        <li>Day: <%=measures.toDay ? measures.toDay : '-' %></li>
-                        <li>Weight: <%=measures.weight ? measures.weight : '-' %> kg</li>
-                        <li>Chest: <%=measures.chest ? measures.chest : '-' %> cm</li>
-                        <li>Hip: <%=measures.hip ? measures.hip : '-' %> cm</li>
-                        <li>Waist: <%=measures.waist ? measures.waist : '-' %> cm</li>
-                        <li>RightThigh: <%=measures.rightThigh ? measures.rightThigh : '-' %> cm</li>
-                        <li>LeftThigh: <%=measures.leftThigh ? measures.leftThigh : '-' %> cm</li>
-                        <li>Upper arm: <%=measures.upperArm ? measures.upperArm : '-' %> cm</li>
-                        <li>Calf: <%=measures.calf ? measures.calf : '-' %> cm</li>
-                    </lu>
-                    <form action='/forms' method="GET">
-                        <input type="submit" value='Update'>
-                    </form>
-                </div>
-                <div class="myRecord">
-                    <h4><%=dailyMeals && dailyMeals.toDay%></h4>
-                    <h3>Breakfast</h3>
-                    <p><%=dailyMeals && dailyMeals.breakfast%></p>
-                    <h3>Lunch</h3>
-                    <p><%=dailyMeals && dailyMeals.lunch%></p>
-                    <h3>Afternoon Snack</h3>
-                    <p><%=dailyMeals && dailyMeals.afternoonSnack%></p>
-                    <h3>Dinner</h3>
-                    <p><%=dailyMeals && dailyMeals.dinner%></p>
-                    <form action='/forms' method="GET">
-                        <input type="submit" value='Update'>
-                    </form>
+                <form action="/home" method='POST' class='selectDay'>
+                    <label for='selectDay'>Select date:</label>
+                    <input type="date" name='selectDay' id='selectDay' required>
+                    <input type="hidden" name='action' value='seach'>
+                    <input type="submit" value='Seach'>
+                </form>
+                <div class='mainInfo'>
+                    <div>
+                        <h3>My data</h3>
+                        <% if(typeof measures === "string"){%>
+                            <p><%= measures %></p>
+                        <%}else{%>
+                            <div>
+                                <lu>
+                                    <li>Day: <%=measures.toDay ? measures.toDay : '-' %></li>
+                                    <li>Weight: <%=measures.weight ? measures.weight : '-' %> kg</li>
+                                    <li>Chest: <%=measures.chest ? measures.chest : '-' %> cm</li>
+                                    <li>Hip: <%=measures.hip ? measures.hip : '-' %> cm</li>
+                                    <li>Waist: <%=measures.waist ? measures.waist : '-' %> cm</li>
+                                    <li>RightThigh: <%=measures.rightThigh ? measures.rightThigh : '-' %> cm</li>
+                                    <li>LeftThigh: <%=measures.leftThigh ? measures.leftThigh : '-' %> cm</li>
+                                    <li>Upper arm: <%=measures.upperArm ? measures.upperArm : '-' %> cm</li>
+                                    <li>Calf: <%=measures.calf ? measures.calf : '-' %> cm</li>
+                                </lu>
+                            </div>
+                        <%}%>
+                        <form action='/forms' method="GET">
+                            <input type="submit" value='Update'>
+                        </form>
+                    </div>
+                    <div>
+                        <% if(typeof dailyMeals === "string"){%>
+                            <p><%= dailyMeals %></p>
+                        <%}else{%>
+                            <div>
+                                <h3><%=dailyMeals && dailyMeals.toDay%></h3>
+                                <h3>Breakfast</h3>
+                                <p><%=dailyMeals && dailyMeals.breakfast%></p>
+                                <h3>Lunch</h3>
+                                <p><%=dailyMeals && dailyMeals.lunch%></p>
+                                <h3>Afternoon Snack</h3>
+                                <p><%=dailyMeals && dailyMeals.afternoonSnack%></p>
+                                <h3>Dinner</h3>
+                                <p><%=dailyMeals && dailyMeals.dinner%></p>
+                            </div>
+                        <%}%>
+                        <form action='/forms' method="GET">
+                            <input type="submit" value='Update'>
+                        </form>
+                    </div>
                 </div>
               <% } %> 
             </div>

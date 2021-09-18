@@ -27,7 +27,7 @@ const dayControllers={
                     try{
                         let measuresEdit = await Day.findOne({'measures.toDay':toDay})
                         if(measuresEdit){
-                            await Day.findOneAndUpdate({'measures._id':_id},{$set:{
+                            await Day.findOneAndUpdate({'measures.toDay':toDay},{$set:{
                                 'measures.$.weight':weight,
                                 'measures.$.chest':chest,
                                 'measures.$.hip':hip,
@@ -72,7 +72,7 @@ const dayControllers={
                     try{
                         let dailyMealsEdit = await Day.findOne({'dailyMeals.toDay':req.body.toDay})
                         if(dailyMealsEdit){
-                            await Day.findOneAndUpdate({'dailyMeals._id':req.body._id},{$set:{
+                            await Day.findOneAndUpdate({'dailyMeals.toDay':req.body.toDay},{$set:{
                                 'dailyMeals.$.breakfast':breakfast,
                                 'dailyMeals.$.lunch':lunch,
                                 'dailyMeals.$.afternoonSnack':afternoonSnack,
