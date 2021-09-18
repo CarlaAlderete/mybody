@@ -1,9 +1,9 @@
 <%- include('partials/head.ejs')%>
 <%- include('partials/header.ejs')%>
     <form action='/home' method='GET'>
-        <input type="submit" value='Back'>
+        <input type="submit" id='back' value='Back'>
     </form>
-    <div class='myProgress'>
+    <div class='myForms'>
         <div class='mydata'>
             <h3>My data</h3>
             <form action='/day/<%= id %>' method='POST'>
@@ -59,19 +59,19 @@
                 <form action='/day/<%= id %>' method='POST'>
                     <input type="date" name="toDay" id="day" required>
                     <div> 
-                        <label for='breakfast'>Breakfast</label>
+                        <label for='breakfast'>Breakfast:</label>
                         <input ype='text' name='breakfast' id='breakfast' value='<%=dailyMeals && dailyMeals.breakfast%>'/>
                     </div>
                     <div>
-                        <label for='lunch'>Lunch</label>
+                        <label for='lunch'>Lunch:</label>
                         <input type='text' name='lunch' id='lunch' value='<%=dailyMeals && dailyMeals.lunch%>'/>
                     </div>
                     <div>
-                        <label for='afternoonSnack'>Afternoon Snack</label>
+                        <label for='afternoonSnack'>Afternoon Snack:</label>
                         <input type='text' name='afternoonSnack' id='afternoonSnack' value='<%=dailyMeals && dailyMeals.afternoonSnack%>'/>
                     </div>
                     <div>
-                        <label for='dinner'>Dinner</label>
+                        <label for='dinner'>Dinner:</label>
                         <input type='text' name='dinner' id='dinner' value='<%=dailyMeals && dailyMeals.dinner%>'/>
                     </div>
                     <input type='hidden' name='_id' value='<%= dailyMeals ? dailyMeals._id : null %>'/>
@@ -81,7 +81,7 @@
             </div>
             <div>
                 <form action='/user/<%= id %>' method='GET'>
-                    <label for='delete'>¿Delete Profile?</label>
+                    <label for='delete'>Delete Profile</label>
                     <input type='submit' id='delete' value='Delete'/>
                 </form>
             </div>

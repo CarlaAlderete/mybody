@@ -2,7 +2,7 @@
 <%- include('partials/header.ejs')%> 
             <div class='myProgress'>
                <% if(!dailyMeals && !measures){%>
-                <form action='/forms' method="GET">
+                <form action='/forms' method="GET" class='new'>
                     <input type='submit' value='Start with your registration'/>
                 </form>
               <%}else{%>
@@ -16,11 +16,13 @@
                     <div>
                         <h3>My data</h3>
                         <% if(typeof measures === "string"){%>
-                            <p><%= measures %></p>
+                            <div>
+                                <p><%= measures %></p>
+                            </div>
                         <%}else{%>
                             <div>
+                                <h3><%=measures.toDay && measures.toDay%></h3>
                                 <lu>
-                                    <li>Day: <%=measures.toDay ? measures.toDay : '-' %></li>
                                     <li>Weight: <%=measures.weight ? measures.weight : '-' %> kg</li>
                                     <li>Chest: <%=measures.chest ? measures.chest : '-' %> cm</li>
                                     <li>Hip: <%=measures.hip ? measures.hip : '-' %> cm</li>
@@ -38,7 +40,9 @@
                     </div>
                     <div>
                         <% if(typeof dailyMeals === "string"){%>
-                            <p><%= dailyMeals %></p>
+                            <div>
+                                <p id='message'><%= dailyMeals %></p>
+                            </div>
                         <%}else{%>
                             <div>
                                 <h3><%=dailyMeals && dailyMeals.toDay%></h3>

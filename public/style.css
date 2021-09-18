@@ -9,16 +9,21 @@ body{
     min-height: 100vh;
     font-family: 'Roboto', sans-serif;
 }
-header nav{
+header{
     display: flex;
     justify-content: space-between;
-    padding: .5vw 2vw;
+    padding: .5vw 6vw;
 }
-header nav a{
+header nav a, header nav p{
     color:#000;
     margin: 0 2vw;
-    font-weight: 700;
-    font-family: 'Courgette', cursive;
+}
+header div{
+    display: flex;
+    align-items: center;
+}
+header div p{
+    margin: 0 2vw;
 }
 h1, h3,h4, header nav a:hover{
     color:#D9A404;
@@ -45,8 +50,8 @@ main{
 .bodySign main{
     display: flex;
 }
-.mainSign, .mainInfo > div, .myProgress > div:first-child, .myProgress > div:last-child > div{
-    background-color: #d9d9d9a6;
+.mainSign, .mainInfo > div, .mydata, .myForms >div:last-child > div{
+    background-color: #e4e2e2d8;
     border-radius: 22px;
     border: 1px solid #D9D9D9;
 }
@@ -91,15 +96,33 @@ input[type='submit']{
     font-size: 7vmin;
     margin-bottom: 1vw;
 }
+.myProfile > p{
+    margin-top: 1vw;
+}
 .selectDay{
     margin: 2vw;
 }
+.myProgress{
+    display: flex;
+    flex-direction: column;
+}
+.myProgress> form{
+    align-self: center;
+}
 .mainInfo{
     display: flex;
+    margin: 0 2vw;
+    padding: 0 6vw;
     justify-content: space-around;
 }
+.new{
+    margin: 3vw;
+}
+.mainInfo div:first-child{
+    min-width: 15%;
+}
 .mainInfo div:last-child{
-    width: 70vw;
+    width: 70%;
 }
 .mainInfo > div{
     display: flex;
@@ -112,46 +135,46 @@ input[type='submit']{
 .mainInfo h3{
     margin: .5vw;
 }
+#message{
+    margin: 2vw 0 0;
+}
 li{
     list-style:none;
     margin: .5vw 2vw;
     text-align: left;
 }
-.myProgress{
+.myForms{
+    padding: 0 6vw;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
-.myProgress> form{
-    align-self: center;
+#back{
+    margin: 2vw;
 }
-.myProgress > div{
-    margin: 0 2vw;
-}
-.myProgress > div:first-child{
+.mydata{
     max-width: 18vw;
 }
-.myProgress > div:first-child form{
+.mydata form{
     padding: .5vh 1vw;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-.myProgress > div:first-child form > input, .myRecord form > input{
-    width: 100%;
+.mydata form > input, .myRecord form > input{
+    width: 99%;
 }
-.myProgress > div:first-child form > div, .myRecord form > div{
+.mydata form > div, .myRecord form > div{
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.myProgress > div:first-child form > div input{
+.mydata form > div input{
     padding: .3vw 1vw;
-    display: flex;
     width: 40%;
 }
-.myProgress > div:last-child{
-    width: 80%;
+.myForms > div:last-child{
+    width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -161,7 +184,7 @@ li{
     margin: 2vw 0;
 }
 .myRecord form{
-    padding: 2vw;
+    padding: 1.5vw 2vw;
     display: flex;
     flex-direction: column;
 }

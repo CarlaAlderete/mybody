@@ -49,10 +49,7 @@ const userControllers ={
     },
     editUser:async(req,res)=>{
         try{
-            let editUser = await User.findOneAndUpdate({_id:req.params.id},{...req.body})
-            req.session.login = true
-            req.session._id = editUser._id
-            req.session.name = editUser.name
+            let editUser = await User.findOneAndUpdate({_id:req.params.id},{...req.body},{new:true})
             req.session.age = editUser.age
             req.session.height = editUser.height
             res.redirect('/home')
