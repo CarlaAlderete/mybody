@@ -8,6 +8,7 @@ const store = new mongo({
     uri:process.env.MONGODB,
     collection: 'sessions'
 })
+const path = require('path')
 
 
 const app= express()
