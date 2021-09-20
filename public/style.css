@@ -32,6 +32,9 @@ h1, h3,h4, header nav a:hover{
 a{
     text-decoration: none;
 }
+input[type='submit']:hover{
+    cursor:pointer;
+}
 main{
     flex-grow: 1;
 }
