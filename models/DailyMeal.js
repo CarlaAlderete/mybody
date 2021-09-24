@@ -8,6 +8,9 @@ const DailyMeal = database.define('dailyMeal',{
     allowNull:false,
     primaryKey:true,
   },
+  today:{
+    type:Sequelize.STRING
+  },
   breakfast:{
     type:Sequelize.STRING
   },

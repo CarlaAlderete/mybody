@@ -1,14 +1,45 @@
+const {Op} = require("sequelize")
 const DailyMeal = require('../models/DailyMeal')
 
 const dailyMealControllers={
     editDailyMeal:async(req,res)=>{
-        if(!req.body._id){
-           let exist = await DailyMeal.findOne({where:{createdAt:{
-                [Op.like]: '%{$req.body.toDay}%'}
-            }})
-            if(!exist){
-                await DailyMeal.
-            }
+        console.log(req.body)
+        const {today,breakfast,lunch,dinner,afternoonSnack,id}=req.body
+        if(!id){
+            let newdailyMeal = await new DailyMeal({
+                today:today,
+                breakfast,
+                lunch,
+                dinner,
+                afternoonSnack,
+                userId:req.params.id
+            })
+            await newdailyMeal.save()
+            res.redirect('/home')
+        }else{
+            let exist = await DailyMeal.findOne({where:{
+                today:{[Op.like]: `%${today}%`},
+                userId : req.params.id
+                }})
+            console.log(exist)
+                if(!exist){
+                    let newdailyMeal = await new DailyMeal({
+                        today:today,
+                        breakfast,
+                        lunch,
+                        dinner,
+                        afternoonSnack,
+                        userId:req.params.id
+                    })
+                    await newdailyMeal.save()
+                    res.redirect('/home')
+                }else{
+                    console.log('tengo q editarme')
+                    await DailyMeal.update(
+                        { ...req.body, userId:req.params.id},
+                        {where: {id}})
+                    res.redirect('/home')
+                }   
         }
     }   
 }

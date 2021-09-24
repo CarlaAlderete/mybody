@@ -6,8 +6,8 @@
     <div class='myForms'>
         <div class='mydata'>
             <h3>My data</h3>
-            <form action='/day/<%= id %>' method='POST'>
-                <input type="date" name="toDay" id="day" required>
+            <form action='/measures/<%= id %>' method='POST'>
+                <input type="date" name="today" id="day" required>
                 <div>
                     <label for='weight'>Weight (kg): </label>
                     <input type='number' name='weight' id='weight' value='<%= measures && measures.weight %>'/>
@@ -40,8 +40,7 @@
                     <label for='calf'>Calf (cm): </label>
                     <input type='number' name='calf' id='calf' value='<%= measures && measures.calf %>'/>
                 </div>
-                <input type='hidden' name='_id' value='<%= measures ? measures._id : null %>'/>
-                <input type='hidden' name='action' value='measures'/>
+                <input type='hidden' name='id' value='<%= measures ? measures.id : null %>'/>
                 <input type='submit' value='Update'/>
             </form>
         </div>
@@ -57,7 +56,7 @@
             </div>
             <div class="myRecord">
                 <form action='/dailyMeal/<%= id %>' method='POST'>
-                    <input type="date" name="toDay" id="day" required>
+                    <input type="date" name="today" id="day" required>
                     <div> 
                         <label for='breakfast'>Breakfast:</label>
                         <input ype='text' name='breakfast' id='breakfast' value='<%=dailyMeals && dailyMeals.breakfast%>'/>

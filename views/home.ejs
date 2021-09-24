@@ -1,8 +1,6 @@
 <%- include('partials/head.ejs')%>
 <%- include('partials/header.ejs')%> 
             <div class='myProgress'>
-                <% console.log(dailyMeals)%>
-                <% console.log(measures)%>
                <% if(!dailyMeals && !measures){%>
                 <form action='/forms' method="GET" class='new'>
                     <input type='submit' value='Start with your registration'/>
@@ -23,7 +21,7 @@
                             </div>
                         <%}else{%>
                             <div>
-                                <h3><%=measures.toDay && measures.toDay%></h3>
+                                <h3><%=measures && measures.today%></h3>
                                 <lu>
                                     <li>Weight: <%=measures ? measures.weight : '-' %> kg</li>
                                     <li>Chest: <%=measures ? measures.chest : '-' %> cm</li>
@@ -47,7 +45,7 @@
                             </div>
                         <%}else{%>
                             <div>
-                                <h3><%=dailyMeals && dailyMeals.toDay%></h3>
+                                <h3><%=dailyMeals && dailyMeals.today%></h3>
                                 <h3>Breakfast</h3>
                                 <p><%=dailyMeals && dailyMeals.breakfast%></p>
                                 <h3>Lunch</h3>
@@ -65,7 +63,4 @@
                 </div>
               <% } %> 
             </div>
-        <script>
-
-        </script>
 <%- include('partials/footer.ejs')%>

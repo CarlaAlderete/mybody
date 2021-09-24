@@ -8,59 +8,54 @@ const Measure = database.define('measure',{
     allowNull:false,
     primaryKey:true,
   },
+  today:{
+    type:Sequelize.STRING
+  },
   chest:{
     type:Sequelize.INTEGER,
     validate:{
-      isNumeric: true,
       max: 200,
     }
   },
   hip:{
     type:Sequelize.INTEGER,
     validate:{
-      isNumeric: true,
       max: 200,
     }
   },
   waist:{
     type:Sequelize.INTEGER,
     validate:{
-      isNumeric: true,
       max: 200,
     }
   },
   rightThigh:{
     type:Sequelize.INTEGER,
     validate:{
-      isNumeric: true,
       max: 200,
     }
   },
   leftThigh:{
     type:Sequelize.INTEGER,
     validate:{
-      isNumeric: true,
       max: 200,
     }
   },
   upperArm:{
     type:Sequelize.INTEGER,
     validate:{
-      isNumeric: true,
       max: 200,
     }
   },
   calf:{
     type:Sequelize.INTEGER,
     validate:{
-      isNumeric: true,
       max: 200,
     }
   },
   weight:{
     type:Sequelize.INTEGER,
     validate:{
-      isNumeric: true,
       max: 400,
     }
   }

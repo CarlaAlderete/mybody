@@ -45,35 +45,30 @@ const userControllers={
             })
         }  
     },
+    editUser:async(req,res)=>{
+        try{
+            await User.update({...req.body},{where: {id:req.params.id}})
+            req.session.age = req.body.age
+            req.session.height = req.body.height
+            res.redirect('/home')
+        }catch(err){
+            res.redirect('/forms')
+        }
+    },
     signout:(req,res)=>{
         req.session.destroy(()=>{
             res.redirect('/')
         })
     },
+    deleteUser:async(req,res)=>{
+        try{
+            await User.destroy({where: {id: req.params.id}})
+            req.session.destroy(()=>{
+                res.redirect('/')
+            })
+        }catch(err){
+            res.redirect('/forms')
+        }
+    }
 }
 module.exports = userControllers
-
- 
-//     editUser:async(req,res)=>{
-//         try{
-//             let editUser = await User.findOneAndUpdate({_id:req.params.id},{...req.body},{new:true})
-//             req.session.age = editUser.age
-//             req.session.height = editUser.height
-//             res.redirect('/home')
-//         }catch(err){
-//             res.redirect('/forms')
-//         }
-
-//     },
-//     deleteUser:async(req,res)=>{
-//         try{
-//             await Day.findOneAndDelete({userId:req.params.id})
-//             await User.findOneAndDelete({_id:req.params.id})
-//             req.session.destroy(()=>{
-//                 res.redirect('/')
-//             })
-//         }catch(err){
-//             res.redirect('/forms')
-//         }
-//     }
-// }

@@ -27,8 +27,8 @@ app.use(
 )
 myStore.sync()
 
-Measure.belongsTo(User)
-DailyMeal.belongsTo(User)
+Measure.belongsTo(User, {onDelete: 'CASCADE'})
+DailyMeal.belongsTo(User, {onDelete: 'CASCADE'})
 User.hasMany(Measure, {onDelete: 'CASCADE'})
 User.hasMany(DailyMeal, {onDelete: 'CASCADE'})
 
