@@ -1,26 +1,39 @@
 const express = require('express')
-const router = require('./routes/index')
-const session = require('express-session')
 require('dotenv').config()
-require("./config/database")
-const mongo = require('connect-mongodb-session')(session)
-const store = new mongo({
-    uri:process.env.MONGODB,
-    collection: 'sessions'
+const router = require('./routes/index')
+const path = require('path')
+const database = require('./config/database')
+const User = require('./models/User')
+const DailyMeal = require('./models/DailyMeal')
+const Measure = require('./models/Measure')
+const session = require('express-session')
+const SequelizeStore = require ('connect-session-sequelize')(session.Store) 
+
+const myStore = new SequelizeStore({
+    db:database
 })
-
-
 const app= express()
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname,'public')))
 app.set('view engine','ejs')
 app.use(express.urlencoded({extended: true}))
-app.use(session({
-    secret: process.env.SESSION_FRASE,
-    resave:false,
-    saveUninitialized:false,
-    store: store
-}))
+app.use(
+    session({
+        secret:process.env.FRASE_SECRET,
+        store:myStore,
+        resave:false,
+        saveUninitialized:false,
+        proxy:true
+    })
+)
+myStore.sync()
 
-app.use('/', router)
+Measure.belongsTo(User)
+DailyMeal.belongsTo(User)
+User.hasMany(Measure, {onDelete: 'CASCADE'})
+User.hasMany(DailyMeal, {onDelete: 'CASCADE'})
 
-app.listen(4000, () => console.log('Server listening'))
+database.sync()
+.then(()=>{
+    app.use('/', router)
+    app.listen(4000)    
+})

@@ -1,13 +1,13 @@
 const express = require('express')
-const { get } = require('mongoose')
 const router = express.Router()
 const myBodyControllers = require('../controllers/myBodyControllers')
 const userControllers = require('../controllers/userControllers')
-const dayControllers = require('../controllers/dayControllers')
+const dailyMealControllers = require('../controllers/dailyMealControllers')
+
 
 router.route('/signup')
 .get(myBodyControllers.signUp)
-.post(userControllers.addUser)
+.post(userControllers.singUp)
 
 router.route('/')
 .get(myBodyControllers.signIn)
@@ -18,16 +18,14 @@ router.route('/signout')
 
 router.route('/home')
 .get(myBodyControllers.home)
-.post(myBodyControllers.homeDay)
+// .post(myBodyControllers.homeDay)
 
 router.route('/forms')
 .get(myBodyControllers.forms)
 
-router.route('/day/:id')
-.post(dayControllers.editDay)
+router.route('/dailyMeal/:id')
+.post(dailyMealControllers.editDailyMeal)
+// router.route('/user/:id')
 
-router.route('/user/:id')
-.get(userControllers.deleteUser)
-.post(userControllers.editUser)
 
 module.exports = router
