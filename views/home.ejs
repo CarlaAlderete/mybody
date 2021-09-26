@@ -23,14 +23,14 @@
                             <div>
                                 <h3><%=measures && measures.today%></h3>
                                 <lu>
-                                    <li>Weight: <%=measures ? measures.weight : '-' %> kg</li>
-                                    <li>Chest: <%=measures ? measures.chest : '-' %> cm</li>
-                                    <li>Hip: <%=measures ? measures.hip : '-' %> cm</li>
-                                    <li>Waist: <%=measures ? measures.waist : '-' %> cm</li>
-                                    <li>RightThigh: <%=measures ? measures.rightThigh : '-' %> cm</li>
-                                    <li>LeftThigh: <%=measures ? measures.leftThigh : '-' %> cm</li>
-                                    <li>Upper arm: <%=measures ? measures.upperArm : '-' %> cm</li>
-                                    <li>Calf: <%=measures ? measures.calf : '-' %> cm</li>
+                                    <li>Weight: <%=(measures && measures.weight !== 0) ? measures.weight : '-' %> kg</li>
+                                    <li>Chest: <%=(measures && measures.chest !== 0) ? measures.chest : '-' %> cm</li>
+                                    <li>Hip: <%=(measures && measures.hip !== 0) ? measures.hip : '-' %> cm</li>
+                                    <li>Waist: <%=(measures && measures.waist !== 0) ? measures.waist : '-' %> cm</li>
+                                    <li>RightThigh: <%=(measures && measures.rightThigh !== 0) ? measures.rightThigh : '-' %> cm</li>
+                                    <li>LeftThigh: <%=(measures && measures.leftThigh !== 0) ? measures.leftThigh : '-' %> cm</li>
+                                    <li>Upper arm: <%=(measures && measures.upperArm !== 0) ? measures.upperArm : '-' %> cm</li>
+                                    <li>Calf: <%=(measures && measures.calf !== 0) ? measures.calf : '-' %> cm</li>
                                 </lu>
                             </div>
                         <%}%>

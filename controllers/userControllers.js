@@ -56,9 +56,13 @@ const userControllers={
         }
     },
     signout:(req,res)=>{
-        req.session.destroy(()=>{
-            res.redirect('/')
-        })
+        try{
+            req.session.destroy(()=>{
+                res.redirect('/')
+            })
+        }catch(err){
+            res.redirect('/home')
+        }
     },
     deleteUser:async(req,res)=>{
         try{

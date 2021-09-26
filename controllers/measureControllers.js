@@ -3,35 +3,40 @@ const Measure = require('../models/Measure')
 
 const MeasureControllers={
     editMeasure:async(req,res)=>{
-        console.log(req.body)
         const {today,weight,chest,hip,waist,rightThigh,leftThigh,upperArm,calf,id}=req.body
         if(!id){
-            let newMeasure = await new Measure({
-                weight,chest,hip,waist,rightThigh,leftThigh,upperArm,calf,today,
-                userId:req.params.id
-            })
-            await newMeasure.save()
-            console.log(newMeasure)
-            res.redirect('/home')
+            try{
+                await Measure.create({
+                    weight,chest,hip,waist,rightThigh,leftThigh,upperArm,calf,today,
+                    userId:req.params.id
+                })
+                res.redirect('/home')
+            }catch(err){
+                res.redirect('/forms')
+            }
         }else{
-            let exist = await Measure.findOne({where:{
-                today:{[Op.like]: `%${today}%`},
-                userId : req.params.id
-                }})
-                if(!exist){
-                    let newMeasure = await new Measure({
+            let exist = await Measure.findOne({where:{today:{[Op.like]: `%${today}%`},userId : req.params.id}})
+            if(!exist){
+                try{
+                    await Measure.create({
                         weight,chest,hip,waist,rightThigh,leftThigh,upperArm,calf,today,
                         userId:req.params.id
                     })
-                    await newMeasure.save()
                     res.redirect('/home')
-                }else{
-                    await Measure.update(
-                        { ...req.body, userId:req.params.id},
-                        {where: {id}})
-                    res.redirect('/home')
+                }catch(err){
+                    res.redirect('/forms')
                 }
-            
+             }else{
+                try{
+                    await Measure.update(
+                        {weight,chest,hip,waist,rightThigh,leftThigh,upperArm,calf, userId: req.params.id},
+                        {where: {today, userId: req.params.id}})
+                    res.redirect('/home')
+                }catch(err){
+                    console.log(err.message)
+                    res.redirect('/forms')
+                }
+            }
         }
     }   
 }
